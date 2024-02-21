@@ -1,6 +1,7 @@
 using Livre.configurations;
 using Livre.models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Livre.controllers {
 
@@ -15,7 +16,9 @@ namespace Livre.controllers {
 
         [HttpGet("books", Name = "GetBooks")]
         public List<Book> GetBooks() {
-            return this._context.Books.ToList();
+            return this._context.Books
+            .Include(b => b.Genres)
+            .ToList();
         }
 
     }

@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Livre.models {
 
     public class Author: BaseDataModel {
@@ -8,6 +10,8 @@ namespace Livre.models {
         public string LastName {get; set;}
         public string Biography {get; set;}
         public string Nationality {get; set;}
+
+        [JsonIgnore]
         public List<Book> Books {get; set;}
 
     }
