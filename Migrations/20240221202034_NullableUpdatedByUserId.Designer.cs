@@ -4,6 +4,7 @@ using Livre.configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Livre.Migrations
 {
     [DbContext(typeof(LivreDbContext))]
-    partial class LivreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240221202034_NullableUpdatedByUserId")]
+    partial class NullableUpdatedByUserId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,14 +120,6 @@ namespace Livre.Migrations
 
                     b.Property<DateOnly>("PublicationDate")
                         .HasColumnType("date");
-
-                    b.Property<string>("Synopsis")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UpdatedByUserId")
                         .HasColumnType("int");

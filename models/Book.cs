@@ -3,6 +3,8 @@ namespace Livre.models {
     public class Book: BaseDataModel {
 
         public int Id {get; set;}
+        public string Title {get; set;}
+        public string Synopsis {get; set;}
         public DateOnly PublicationDate {get; set;}
         public string ISBN {get; set;}
 
