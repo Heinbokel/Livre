@@ -6,6 +6,9 @@ namespace Livre.models {
         public string Name {get; set;}
         public string Description {get; set;}
 
+        // A Genre can belong to many books.
+        public List<Book> Books {get; set;}
+
     }
 
 }

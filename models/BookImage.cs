@@ -6,7 +6,7 @@ namespace Livre.models {
         public string ImageUrl {get; set;}
         public string Caption {get; set;}
 
-        // Foreign Keys for One to Many 
+        // A Book Image can belong to only one book (BookId + Book designates )
         public int BookId {get; set;}
         public Book Book {get; set;}
 
