@@ -1,4 +1,5 @@
 using Livre.configurations;
+using Livre.repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<LivreDbContext>();
+builder.Services.AddScoped<IBooksRepository, BookRepositoryEFImpl>();
 
 var app = builder.Build();
 

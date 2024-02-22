@@ -1,5 +1,6 @@
 using Livre.configurations;
 using Livre.models;
+using Livre.repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,17 +9,21 @@ namespace Livre.controllers {
     [ApiController]
     public class BooksController: ControllerBase {
         
-        private readonly LivreDbContext _context;
+        private readonly IBooksRepository _booksRepository;
 
-        public BooksController(LivreDbContext livreDbContext) {
-            this._context = livreDbContext;
+        public BooksController(IBooksRepository booksRepository) {
+            this._booksRepository = booksRepository;
         }
 
         [HttpGet("books", Name = "GetBooks")]
-        public List<Book> GetBooks() {
-            return this._context.Books
-            .Include(b => b.Genres)
-            .ToList();
+        public List<Book> GetBooks([FromQuery] string? criteria) {
+            List<Book> books = [];
+            if (criteria != null) {
+                books = this._booksRepository.GetBooksByCriteria(criteria);
+            } else {
+                books = this._booksRepository.GetBooks();
+            }
+            return books;
         }
 
     }
