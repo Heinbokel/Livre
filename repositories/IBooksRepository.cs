@@ -35,11 +35,10 @@ namespace Livre.repositories {
         /// <param name="synopsis">The book's synopsis.</param>
         /// <param name="isbn">The book's ISBN.</param>
         /// <param name="publicationDate">The book's publication date.</param>
-        /// <param name="authors">The book's authors.</param>
-        /// <param name="genres">The book's genres.</param>
-        /// <param name="bookImages">The book's images.</param>
+        /// <param name="authorIds">The book's author Id's.</param>
+        /// <param name="genreIds">The book's genre Id's.</param>
         /// <returns>The created book, with its generated ID included.</returns>
-        public Book CreateBook(string title, string synopsis, string isbn, DateOnly publicationDate, List<Author> authors, List<Genre> genres, List<BookImage> bookImages);
+        public Book CreateBook(string title, string synopsis, string isbn, DateOnly publicationDate, List<int> authorIds, List<int> genreIds);
 
         /// <summary>
         /// Updates a book and saves it to the database with the given parameters.
@@ -49,16 +48,15 @@ namespace Livre.repositories {
         /// <param name="synopsis">The book's synopsis.</param>
         /// <param name="isbn">The book's ISBN.</param>
         /// <param name="publicationDate">The book's publication date.</param>
-        /// <param name="authors">The book's authors.</param>
-        /// <param name="genres">The book's genres.</param>
-        /// <param name="bookImages">The book's images.</param>
-        public void UpdateBook(string id, string title, string synopsis, string isbn, DateOnly publicationDate, List<Author> authors, List<Genre> genres, List<BookImage> bookImages);
+        /// <param name="authorIds">The book's author Id's.</param>
+        /// <param name="genreIds">The book's genre Id's.</param>
+        public void UpdateBook(int id, string title, string synopsis, string isbn, DateOnly publicationDate, List<int> authorIds, List<int> genreIds);
 
         /// <summary>
         /// Deletes a book from the database with the given ID.
         /// </summary>
         /// <param name="id">The ID of the book to delete.</param>
-        public void DeleteBook(string id);
+        public void DeleteBook(int id);
 
     }
 

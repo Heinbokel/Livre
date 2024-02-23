@@ -1,5 +1,6 @@
 using Livre.configurations;
 using Livre.repositories;
+using Livre.services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Dependency Injection Mappings
+
+// Repositories
 builder.Services.AddScoped<LivreDbContext>();
-builder.Services.AddScoped<IBooksRepository, BookRepositoryEFImpl>();
+builder.Services.AddScoped<IBooksRepository, BooksRepositoryEFImpl>();
+builder.Services.AddScoped<IAuthorsRepository, AuthorsRepositoryEFImpl>();
+builder.Services.AddScoped<IGenresRepository, GenresRepositoryEFImpl>();
+
+
+// Services (We aren't using interfaces here as we will probably never switch out these services for something else.)
+builder.Services.AddScoped<BooksService>();
+builder.Services.AddScoped<AuthorsService>();
+
 
 var app = builder.Build();
 
