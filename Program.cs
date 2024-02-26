@@ -2,6 +2,8 @@ using Livre.configurations;
 using Livre.repositories;
 using Livre.services;
 
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -24,6 +26,17 @@ builder.Services.AddScoped<IGenresRepository, GenresRepositoryEFImpl>();
 builder.Services.AddScoped<BooksService>();
 builder.Services.AddScoped<AuthorsService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                      });
+});
+
 
 var app = builder.Build();
 
@@ -39,5 +52,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();

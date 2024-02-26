@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Livre.models {
 
     public class Book: BaseDataModel {

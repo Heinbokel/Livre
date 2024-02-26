@@ -16,6 +16,11 @@ namespace Livre.controllers {
             this._authorsService = authorsService;
         }
 
+        [HttpGet("authors", Name = "GetAuthors")]
+        public List<Author> GetAuthors() {
+            return this._authorsService.GetAuthors(null);
+        }
+
     }
 
 }

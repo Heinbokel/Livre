@@ -22,8 +22,8 @@ namespace Livre.repositories {
         }
 
         ///<inheritdoc/>
-        public List<Author> GetAuthorsByIds(List<int> ids) {
-            return this._context.Authors.Where(author => ids.Contains(author.Id)).ToList();
+        public List<Author> GetAuthors() {
+            return this._context.Authors.ToList();
         }
 
     }

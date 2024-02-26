@@ -7,7 +7,7 @@ namespace Livre.repositories {
     /// </summary>
     /// <author>Bob Heinbokel</author>
     public interface IAuthorsRepository {
-        
+        public List<Author> GetAuthors();
     }
 
 }

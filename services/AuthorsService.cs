@@ -21,7 +21,7 @@ namespace Livre.services {
         /// <param name="criteria">The criteria to search on.</param>
         /// <returns>The list of authors to return.</returns>
         public List<Author> GetAuthors(string? criteria) {
-            throw new NotImplementedException();
+            return this._authorsRepository.GetAuthors();
         }
 
         /// <summary>
