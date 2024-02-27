@@ -16,7 +16,7 @@ namespace Livre.models.requests {
         public DateOnly PublicationDate {get; set;}
 
         [Required]
-        [RegularExpression(@"^\d{10}|\d{13}$", ErrorMessage = "ISBN must be exactly 10 or 13 digits long (no dashes).")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "ISBN must be exactly 10 digits long (no dashes).")]
         public string ISBN {get; set;}
 
         // The following lists hold ID's of the given entities, which are not required.
