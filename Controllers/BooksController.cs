@@ -1,4 +1,5 @@
 using Livre.configurations;
+using Livre.exceptions;
 using Livre.models;
 using Livre.models.requests;
 using Livre.services;
