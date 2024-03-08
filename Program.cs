@@ -13,6 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Exception Handler
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 // Dependency Injection Mappings
 
 // Repositories
@@ -31,7 +34,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy  =>
                       {
-                          policy.WithOrigins("http://localhost:4200")
+                          policy.AllowAnyOrigin()
                           .AllowAnyHeader()
                           .AllowAnyMethod();
                       });
@@ -52,6 +55,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseExceptionHandler(_ => {});
 
 app.UseCors(MyAllowSpecificOrigins);
 
