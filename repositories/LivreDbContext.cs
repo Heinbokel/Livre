@@ -9,11 +9,11 @@ namespace Livre.configurations
         private readonly IConfiguration _configuration;
 
         //DbSets defining our tables for our models.
-        public DbSet<Author> Authors {get; set;}
-        public DbSet<Book> Books {get; set;}
-        public DbSet<Genre> Genres {get; set;}
-        public DbSet<BookImage> BookImages {get; set;}
-        
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<BookImage> BookImages { get; set; }
+
         /// <summary>
         /// Constructor for dependency injection.
         /// </summary>
@@ -22,7 +22,7 @@ namespace Livre.configurations
         {
             this._configuration = configuration;
         }
-        
+
         /// <summary>
         /// Configures the database configurations.
         /// </summary>
